@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APLICACION</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'imgs/favicon.png') }}">
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <style>
+        .msg{
+            text-align: center;
+            font-size: 4rem;
+            line-height: 1em;
+            font-weight: 800;
+            color: orange;
+            background: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .contenedor{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+        }
+        body{
+            height: 100%;
+            width: 100%;
+            font-family:serif;
+            background: linear-gradient(60deg, white, rgb(241, 23, 230));
+        }
+        .contenido{
+            position: relative;
+            background-color: lightsalmon;
+            border-radius: 1rem;
+            padding: 4px; /*el ancho y alto*/ 
+        }
+        .contenido form{
+            text-align: center;
+            padding: 0 0 4px 0; /*espacio arriva abajo y a los costados*/
+        }
+
+        .formulario{
+            padding: 0px 2px 0px 2px;
+            box-sizing: border-box;
+        }
+        .formulario label{
+            position: relative;
+            font-size: 20px;
+        }
+        .formulario input{
+            border-radius: 0.5rem;
+            padding: 0 0 3px 8px;
+            font-size: 20px;
+        }
+        .envio #button-primary{
+            letter-spacing: 0px;
+            width: 290px;
+            height: 30px;
+            border: 1px solid;
+            background-color: #6C3483;
+            border-radius: 25px;
+            font-size: 13px;
+            color: white;
+        }
+        .envio #button-primary:hover{
+            letter-spacing: 4px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+
+        <p class="msg">{{ msg }}</p>
+
+                <div class="contenedor">
+                    <div class="contenido">
+                        <strong>
+                            Crear formulario con Flask y Python 🐍 a MySQL 
+                        </strong><br><br>
+                        <div class="envio"> 
+                            <form action="{{ url_for('actor_bp.registrarForm') }}" method="POST" autocomplete="off">
+                                <nav class="formulario">
+                                    <label>Nombre</label>
+                                    <input type="text" name="first_name"><br><br>
+                            
+                                    <label>Apellido</label>
+                                    <input type="text" name="last_name"><br><br>
+
+                                    <label>Email</label>
+                                    <input type="text" name="email"><br><br>
+                                </nav>
+
+                                <input id="button-primary" type="submit" value="Enviar mi formulario">
+                            </form>
+                            <strong>
+                                Actualizar formulario con Flask y Python 🐍 a MySQL 
+                            </strong><br><br>
+                           
+                            <form action="{{ url_for('actor_bp.update_Form', customer_id=1453) }}" method="POST" autocomplete="off">
+                                <nav class="formulario">
+                                    <label>Nombre</label>
+                                    <input type="text" name="first_name"><br><br>
+                            
+                                    <label>Apellido</label>
+                                    <input type="text" name="last_name"><br><br>
+
+                                    <label>Email</label>
+                                    <input type="text" name="email"><br><br>
+                                </nav>
+
+                                <input id="button-primary" type="submit" value="Enviar mi modificacion">
+                            </form>     
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+    <script>
+    setTimeout(function(){
+        elementoP = document.querySelector('.msg');
+        elementoP.style.display = 'none';
+    }, 2000);
+    </script>
+
+    
+</body>
+</html>
