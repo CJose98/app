@@ -7,12 +7,6 @@ from flask import jsonify
 
 class App_Discor:
 
-    """def __init__(self, customer_id = None, first_name = None, last_name = None, email = None):
-        self.customer_id = customer_id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email"""
-
     
     #http://127.0.0.1:5000/obtenerCliente/2
     def get_cliente(customer_id):
