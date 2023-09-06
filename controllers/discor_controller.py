@@ -4,7 +4,7 @@ from flask import request, render_template
 from ..database import DatabaseConnection, DatabaseConnection_2
 from flask import jsonify
 
-print("Hola mundo!")
+print("Hola mundo! 2")
 
 
 class App_Discor:
