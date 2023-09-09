@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from app.database.database import DatabaseConnection_4
+from app.database.database import DataBaseConnection_4
 from config import Config
 from .routes.actor_bp import actor_bp
 
@@ -18,13 +18,13 @@ def inicializar_app():
         def crear_sala():
                sql="insert into user_1.salas (Nombre_sala) values(%s);"
                params=request.args.get('nombre_sala','')
-               DatabaseConnection_4.execute_query(sql,params)
+               DataBaseConnection_4.execute_query(sql,params)
                return {"msg":"Sala creada con exito "},201
        
         @app.route('/Salas',methods=['GET']) 
         def mostrar_salas():
                sql="SELECT * FROM user_1.salas where id_Salas=%s;"
-               results = DatabaseConnection_4.fetch_all(sql)
+               results = DataBaseConnection_4.fetch_all(sql)
                salas=[]
                for result in results:
                 salas.append({"Id_Sala":result[0],
@@ -36,14 +36,14 @@ def inicializar_app():
         def mod_sala(id_sala):
               sql=" UPDATE salas SET Nombre_sala= %s WHERE id_Salas=%s;"
               params=request.args.get('Nombre_sala',''),id_sala
-              DatabaseConnection_4.execute_query(sql,params)
+              DataBaseConnection_4.execute_query(sql,params)
               return{"msg":"sala actualizad correctamente"},200
         
         @app.route('/EliminarSala/<int:id_sala>',methods=['DELETE'])
         def eliminarSala(id_sala):
                 sql="delete from user_1.salas where id_Salas=%s; "
                 params=id_sala
-                params=DatabaseConnection_4.execute_query(sql,params)
+                params=DataBaseConnection_4.execute_query(sql,params)
                 return {"msg": "Sala eliminada con éxito"}, 204
         
         #----------------------------------#
@@ -52,7 +52,7 @@ def inicializar_app():
         @app.route('/users',methods=[''])
         def todos_users ():
               sql="SELECT * FROM user_1.usuario;"
-              results=DatabaseConnection_4.fetch_all(sql)
+              results=DataBaseConnection_4.fetch_all(sql)
               Usuarios=[]
               for result in results:
                    Usuarios.append({"Id_Usuario":result[0],
@@ -68,13 +68,13 @@ def inicializar_app():
         def crear_us():
              sql=""
              params=""
-             DatabaseConnection_4.execute_query(sql,params)
+             DataBaseConnection_4.execute_query(sql,params)
              return 
         @app.route('/ModificarUsuario/<int:id_user',methods=['PUT']) 
         def mod_user(id_user):
                 sql="UPDATE usuario SET password=%s WHERE user_id= %s;"
                 params=request.args.get('password',''),id_user
-                DatabaseConnection_4.execute_query(sql,params)
+                DataBaseConnection_4.execute_query(sql,params)
                 return 
 
         #        @app.route('/',methods=['']) 
