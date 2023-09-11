@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template
 
-user_bb=Blueprint('Users')
+user_bp=Blueprint('Users')
+@user_bp.route('/')
+def init():
+    return render_template ('login.html')
 
-user_bp.route('/todos_user/<int:customer_id>', methods = ['GET'])#(BikeStores.get_cliente)
-user_bp.route('/crear_us', methods = ['GET'])#(BikeStores.get_clientes)
-user_bp.route('/mod_us/<int:id_user>',methods=['GET'])
-user_bp.route('/eliminarCliente/<int:custome_id>', methods = ['DELETE
+user_bp.route('/users>', methods = ['GET'])
+user_bp.route('/crearUser', methods = ['GET'])
+user_bp.route('/ModificarUsuario/<int:id_user>',methods=['GET'])
+user_bp.route('/EliminarUser/<int:custome_id>', methods = ['DELETE'])

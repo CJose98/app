@@ -5,6 +5,7 @@ from ..controllers.discor_controller import BikeStores
 actor_bp = Blueprint('actor_bp',__name__)
 
 
+
 #ingresar a la vista
 @actor_bp.route("/", methods=['GET'])
 def home():
