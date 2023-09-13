@@ -1,14 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,Blueprint
 from app.database.database import DataBaseConnection_4
 from config import Config
-from .routes.actor_bp import actor_bp
+from .routes.sala_bp import sala_bp
+from .routes.user_pb import user_bp
 
 
 def inicializar_app():
         """Crea y configura la aplicación Flask"""
         app = Flask(__name__)
         app.config.from_object(Config)
-        app.register_blueprint(actor_bp)
+        #app.register_blueprint(actor_bp)
+        sala_bp = Blueprint('sala_bp',__name__)
+        user_bp=Blueprint('Users')
+
 
         @app.route('/')
         def init():
