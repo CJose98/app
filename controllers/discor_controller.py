@@ -12,15 +12,15 @@ print("Hola mundo! 2")
 
 
 class App_Discor:
-    def __init__(self,id_user=None,Apellido=None,Nombre=None,Correo=None,password=None,Nombre_usuario=None,Fecha_nac=None):
+    def __init__(self,id_user=None,apellido=None,nombre=None,correo=None,password=None,nombre_usuario=None,fecha_nac=None):
             #Contructor
             self.id_user=id_user
-            self.Apellido=Apellido
-            self.Nombre=Nombre
-            self.Correo=Correo
-            self.password=password#cambniar despuesde cambia db Password
-            self.Nombre_usuario=Nombre_usuario
-            self.Fecha_nac=Fecha_nac
+            self.nombre=nombre
+            self.apellido=apellido
+            self.correo=correo
+            self.password=password
+            self.nombre_usuario=nombre_usuario
+            self.fecha_nac=fecha_nac
     
     @classmethod
     def todos_users ():
@@ -29,8 +29,8 @@ class App_Discor:
               Usuarios=[]
               for result in results:
                    Usuarios.append({"Id_Usuario":result[0],
-                          "Apellido ":result[1],
-                          "Nombre":result[2],
+                          "Nombre":result[1],
+                          "Apellido ":result[2],
                           "Correo":[3],
                           "Pass":[4],
                           "Nombre Usuario":[5],
@@ -39,9 +39,9 @@ class App_Discor:
               return Usuarios,200  
     @classmethod
     def crear_us():
-             sql="insert into user_1.usuario (Apellido,Nombre,Correo,Contraseña,Nombre_usuario,Fecha_nac)values(%s,%s,%s,%s,%s,%s);"
-             params=request.args.get('Apellido',''),request.args.get('Nombre',''),request.args.get('Correo',''),
-             request.args.get('Contraseña',''),request.args.get('Nombre_usuario',''),request.args.get('Fecha_nac','')
+             sql="insert into user_1.usuario (apellido,nombre,correo,password,nombre_usuario,fecha_nac)values(%s,%s,%s,%s,%s,%s);"
+             params=request.args.get('apellido',''),request.args.get('nombre',''),request.args.get('correo',''),
+             request.args.get('password',''),request.args.get('nombre_usuario',''),request.args.get('fecha_nac','')
              DataBaseConnection_4.execute_query(sql,params)
              return {'msg':'Usuario Creado con exito'},201
     @classmethod
