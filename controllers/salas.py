@@ -7,7 +7,7 @@ from ..database import DataBaseConnection_4
 from flask import jsonify
 class salas_discord:
     def __init__(self,id_sala=None,nombre_sala=None):
-            self.id_Sala=id_sala
+            self.id_sala=id_sala
             self.Nombre_sala=nombre_sala
             
     @classmethod
