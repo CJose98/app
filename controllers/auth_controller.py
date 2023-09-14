@@ -1,15 +1,5 @@
-#from ..models.actor_model import Actor
-#from ..routes.actor_bp import Actor
-from flask import request, render_template
-
-from app.database.database import DatabaseConnection, DatabaseConnection_2
-
-from ..database import DataBaseConnection_4
-
-from flask import jsonify
-
-print("Hola mundo! 2")
-
+from ..models.auth.user_model import User
+from flask import request, session, jsonify,render_template
 
 class UserController:
 
@@ -44,7 +34,5 @@ class UserController:
     @classmethod
     def logout(cls):
         session.pop('correo', None)
-        return {"message": "Sesion cerrada"}, 200 
+        return {"message": "Sesion cerrada"}, 200
     
-    
-   
