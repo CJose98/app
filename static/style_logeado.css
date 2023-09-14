@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    background: url('./img/marco2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#contenedor{
+    position: fixed; /*posicion fija*/
+    width: 200px;
+    height: 100%;
+
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+#contenedor #logo{
+    text-align: center;
+    border-bottom: 1px solid rgba(17, 16, 16, 0.3); /*linias de separacion*/
+    padding: 45px 10px;
+}
+
+#contenedor  ul li{
+    text-align: center;
+    padding: 15px 10px;
+    
+}
+
+.user_l2{
+    padding-bottom: 400px;
+}
+#contenedor #user{
+    border-top: 3px solid rgba(17, 16, 16, 0.3); /*linias de separacion*/
+    text-align: center;
+    padding: 15px 10px;
+}
+
+/* USER LOGUEADO */
+
+#contenido{
+    display: flex;           /*Eleigir el modelo de diseño*/
+    flex-direction: column;  /*la dirección en la que los elementos se colocan dentro del contenedor flexible*/
+    justify-content: center; /*Controla la alineación de los elementos en el eje principal     */
+    align-items: center;     /*Determina la alineación de los elementos en el eje secundario*/
+    padding: 0 0 0 210px;
+
+    
+}
+#contenido a{
+    margin-top: 200px;/*ESPACIO CON EL LATERAL*/
+    text-align:center;
+    color: #fff;
+    font-size: 30px;
+    position: relative;
+    border-radius: 1rem;
+    padding: 25px 40px 25px 40px;
+
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+}
+
+
+/* TODOS SERVIDORES */
+
+.grid-container{
+    display: grid;
+    grid-template-columns:2fr 2fr 2fr;    /*altura de columas*/
+    grid-template-rows: 5rem 5rem 5rem;  /*ancho de las filas*/
+
+    grid-column-gap: 5%;                /*espaciado de las columnas*/
+    grid-row-gap:5%;                  /*espaciado de las filas*/
+
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    padding: 50px 0px 0px 250px;
+
+}
+.item-grid{
+    text-align: center; 
+    font-size: 15px;
+    margin: 10px 10px;
+    position: relative;
+    border-radius: 3rem;
+
+
+    padding: 5px 3px 3px 5px;
+    background: transparent;
+    backdrop-filter: blur(3px);
+    cursor: pointer;
+}
