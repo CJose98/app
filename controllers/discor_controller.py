@@ -12,13 +12,13 @@ print("Hola mundo! 2")
 
 
 class App_Discor:
-    def __init__(self,id_user=None,Apellido=None,Nombre=None,Correo=None,Contraseña=None,Nombre_usuario=None,Fecha_nac=None):
+    def __init__(self,id_user=None,Apellido=None,Nombre=None,Correo=None,password=None,Nombre_usuario=None,Fecha_nac=None):
             #Contructor
             self.id_user=id_user
             self.Apellido=Apellido
             self.Nombre=Nombre
             self.Correo=Correo
-            self.Contraseña=Contraseña
+            self.password=password#cambniar despuesde cambia db Password
             self.Nombre_usuario=Nombre_usuario
             self.Fecha_nac=Fecha_nac
     
