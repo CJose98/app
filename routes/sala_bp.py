@@ -1,13 +1,12 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 
-sala_bp = Blueprint('sala_bp',__name__)
+from ..controllers.sala_controller import SalaController
+
+sala_bp = Blueprint('sala_bp', __name__)
 
 
+"""sala_bp.route('/user_logeado', methods=['GET'])(UserController.show_profile)  #html de logeado"""
 
-#ingresar a la vista
-@sala_bp.route("/", methods=['GET'])
-def home():
-    """Landing page route."""
-    return render_template("index.html")
-sala_bp.route('/mostrar_sala/<int:customer_id>', methods = ['GET'])
-sala_bp.route('/crear_sala/')
+sala_bp.route('/sala', methods=['GET'])(SalaController.show_sala)         #html de registro
+
+sala_bp.route('/logout', methods=['GET'])(SalaController.logout)            # nada X

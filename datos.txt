@@ -1,0 +1,43 @@
+*************************************************************************************************
+.env: 
+
+SECRET_KEY = 352528b35a4cca7bf961c3f7c0dac9642c527428388d4de5f443df34f0e6e320
+
+DATABASE_USERNAME = 'root'
+DATABASE_PASSWORD = 'root'
+DATABASE_HOST = 'localhost'
+DATABASE_PORT = '3306'
+
+
+
+**************************************************************************************************
+config.py:
+
+from dotenv import dotenv_values
+
+class Config:
+    config = dotenv_values(".env")
+    
+    SECRET_KEY = config['SECRET_KEY']
+    SERVER_NAME = "127.0.0.1:5000"
+    DEBUG = True
+
+    DATABASE_USERNAME = config['DATABASE_USERNAME']
+    DATABASE_PASSWORD = config['DATABASE_PASSWORD']
+    DATABASE_HOST = config['DATABASE_HOST']
+    DATABASE_PORT = config['DATABASE_PORT']
+
+
+    TEMPLATE_FOLDER = "templates/"
+    STATIC_FOLDER = "static/"
+
+***************************************************************************************************
+run.py
+
+from app import init_app
+
+if __name__ == "__main__":
+    app = init_app()
+    app.run()
+
+
