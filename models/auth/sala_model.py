@@ -6,13 +6,13 @@ from flask import json
 class Sala:
 
     def __init__(self, **kwargs):
-        self.id_sala = kwargs.get('id_sala')
-        self.nombre_sala = kwargs.get('nombre_sala')
+        self.id_servidor = kwargs.get('id_servidor')
+        self.nombre_servidor = kwargs.get('nombre_servidor')
 
     def serialize(self):
         return  {
-            "id_sala": self.id_sala,
-            "nombre_sala": self.nombre_sala
+            "id_servidor": self.id_servidor,
+            "nombre_servidor": self.nombre_servidor
             
             #"status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
             #"role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
@@ -20,19 +20,19 @@ class Sala:
 
     @classmethod
     def get(cls, sala):
-        query = """SELECT salas.id_sala, salas.nombre_sala
-                    FROM user_1.salas INNER JOIN user_1.usuario
-                    ON salas.id_sala = usuario.id_user
-                    WHERE usuario.correo = %(correo)s"""
-        
+        query = """SELECT servidores.id_servidor, servidores.nombre_servidor
+                FROM Discor.servidores INNER JOIN Discor.usuarios
+                ON servidores.id_servidor = usuarios.id_usuario
+                WHERE usuarios.correo = %(correo)s""" #  ver q sea una lista
+                            
         params = sala.__dict__
-        result = DatabaseConnection.fetch_one(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
+        result = DatabaseConnection.fetch_all(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
 
 
         if result is not None:
             return cls(
-                id_sala = result[0],
-                nombre_sala = result[1]
+                id_servidor = result[0],
+                nombre_servidor = result[1]
             )
         return None
 
