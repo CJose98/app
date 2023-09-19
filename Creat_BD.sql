@@ -91,6 +91,11 @@ FROM Discor.servidores
 INNER JOIN user_servi ON servidores.id_servidor = user_servi.servidor_id
 WHERE user_servi.usuario_id = 1; /*'id_usuario_en_sesion'*/
 
+SELECT servidores.id_servidor, servidores.nombre_servidor
+FROM Discor.servidores INNER JOIN Discor.usuarios
+ON servidores.propietario_id = usuarios.id_usuario
+WHERE usuarios.correo = 'matula77@yahoo.com.ar'; /*'cjose@gmail.com';*/
+
 /*3. Búsqueda de Canales en un Servidor Seleccionado:
 Teniendo el id_servidor del servidor seleccionado y deseas encontrar los canales en ese servidor:
 Esta consulta devuelve una lista de canales en el servidor seleccionado.*/
