@@ -24,16 +24,18 @@ class Sala:
                     FROM user_1.salas INNER JOIN user_1.usuario
                     ON salas.id_sala = usuario.id_user
                     WHERE usuario.correo = %(correo)s"""
-        
         params = sala.__dict__
-        result = DatabaseConnection.fetch_one(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
-
-
+        result = DatabaseConnection.fetch_one(query, params=params) 
+        #fetch_all (DEBE OBTENER UNA LISTA O NO )
         if result is not None:
             return cls(
                 id_sala = result[0],
                 nombre_sala = result[1]
             )
+        #fijate jose si no te falto for result in results
+        # sala=[]
+        # append.sala{'nombresala':result[1],
+        #             'id_sala':result[0]}
         return None
 
 
