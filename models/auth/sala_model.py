@@ -26,7 +26,7 @@ class Sala:
                 WHERE usuarios.correo = %(correo)s""" #  ver q sea una lista
                             
         params = sala.__dict__
-        result = DatabaseConnection.fetch_all(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
+        result = DatabaseConnection.fetch_one(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
 
 
         if result is not None:
