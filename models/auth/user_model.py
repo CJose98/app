@@ -5,31 +5,33 @@ from ...database import DatabaseConnection
 class User:
 
     def __init__(self, **kwargs):
-        self.id_user = kwargs.get('id_user')
+        self.id_usuario = kwargs.get('id_usuario')
         self.nombre = kwargs.get('nombre')
         self.apellido = kwargs.get('apellido')
         self.correo = kwargs.get('correo')
-        self.contraseña = kwargs.get('contraseña')
+        self.password = kwargs.get('password')
         self.nombre_user = kwargs.get('nombre_user')
         self.fecha_nac = kwargs.get('fecha_nac')
+        self.img_perfil = kwargs.get('fecha_nac')
 
     def serialize(self):
         return {
-            "id_user": self.id_user,
+            "id_usuario": self.id_usuario,
             "nombre": self.nombre,
             "apellido": self.apellido,
             "correo": self.correo,
-            "contraseña": self.contraseña,
+            "password": self.password,
             "nombre_user": self.nombre_user,
-            "fecha_nac": self.fecha_nac  #faltaba sacar la coma
+            "fecha_nac": self.fecha_nac,
+            "img_perfil": self.img_perfil  #faltaba sacar la coma
             #"status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
             #"role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
         }
 
     @classmethod
     def is_registered(cls, user):   
-        query = """SELECT id_user FROM user_1.usuario 
-        WHERE correo = %(correo)s and nombre_user = %(nombre_user)s"""
+        query = """SELECT id_usuario FROM Discor.usuarios 
+        WHERE correo = %(correo)s and password = %(password)s"""
         params = user.__dict__
         result = DatabaseConnection.fetch_one(query, params=params)
 
@@ -39,7 +41,7 @@ class User:
     
     @classmethod
     def get(cls, user):
-        query = """SELECT * FROM user_1.usuario 
+        query = """SELECT * FROM Discor.usuarios 
         WHERE correo = %(correo)s"""
         params = user.__dict__
         result = DatabaseConnection.fetch_one(query, params=params)
@@ -52,6 +54,7 @@ class User:
                 correo = result[3],
                 contraseña = result[4],
                 nombre_user = result[5],
-                fecha_nac = result[6]
+                fecha_nac = result[6],
+                img_perfil = result[7]
             )
         return None

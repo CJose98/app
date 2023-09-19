@@ -8,7 +8,7 @@ class UserController:
         data = request.json
         user = User(
             correo = data.get('correo'),
-            nombre_user = data.get('nombre_user')
+            password = data.get('password')
         )
 
         if User.is_registered(user):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
