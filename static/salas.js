@@ -70,6 +70,9 @@ registro.addEventListener('click', function(){
 btn_new_sala=document.getElementById('sala_nueva').addEventListener('click',function(){
     Sala.create_sala()
 });
+btn_mostra_salas =document.getElementById('todo_sala').addEventListener('click',function(){
+    Sala.get_all_salas()
+});
 
 
 
