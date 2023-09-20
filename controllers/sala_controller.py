@@ -6,12 +6,26 @@ class SalaController:
 
     @classmethod
     def show_sala(cls):
-        correo = session.get('correo')
-        sala = Sala.get(User(correo = correo))
-        if sala is None:
+        correo = session.get('correo')                         
+        user = User(correo=correo)#user = Sala.get(User(correo = correo))
+        if user is None:
             return {"message": "Usuario no encontrado"}, 404
         else:
-            return sala.serialize(), 200 #cambiar debe redigir a la pagina
+            salas = Sala.get(user)  # Obtiene una lista de instancias de sala
+
+            if salas:
+                if isinstance(salas, Sala):
+                    salas = [salas]  # Si salas es un solo objeto Sala, se convierte en una lista
+
+                """serialized_salas = [sala.serialize() for sala in salas]"""
+                
+                # Crear un diccionario que representa las salas
+                serialized_salas = {}
+                for index, sala in enumerate(salas, start=1):
+                    serialized_salas[f"sala{index}"] = sala.serialize()
+                return jsonify(serialized_salas), 200
+            else:
+                return jsonify({"message": "No se encontraron salas"}), 404
     
     @classmethod
     def logout(cls):
