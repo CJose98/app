@@ -67,8 +67,9 @@ registro.addEventListener('click', function(){
     busqueda.style.display = 'block';
     grid.style.display = 'block';
 }); 
-
-
+btn_new_sala=document.getElementById('sala_nueva').addEventListener('click',function(){
+    Sala.create_sala()
+});
 
 
 
