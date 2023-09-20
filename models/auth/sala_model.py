@@ -49,7 +49,24 @@ class Sala:
         values(%s,%s);"""
         params = (Sala.nombre_servidor,Sala.propietario_id)
         DatabaseConnection.execute_query(sql, params)
-        return None
+        
+        if params == None:
+            return True
+        else:
+            return False
+        
+    #-----------------------------------------------------#
+    def get_all_salas(cls):
+         sql="SELECT * FROM discord.servidores;"
+         results = DatabaseConnection.fetch_all(sql)
+         salas=[]
+         for result in results:
+                salas.append({"Id_Servidor":result[0],
+                              "Nombre_Servidor":result[1]
+                              })
+         return salas,200
+        
+
     
     
 

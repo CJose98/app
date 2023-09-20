@@ -1,3 +1,4 @@
+from app.database import DatabaseConnection
 from ..models.auth.user_model import User
 from ..models.auth.sala_model import Sala
 from flask import request, session, jsonify,render_template
@@ -31,3 +32,14 @@ class SalaController:
     def logout(cls):
         session.pop('correo', None)
         return {"message": "Sesion cerrada"}, 200
+    
+    @classmethod
+    def crear_servidor():
+        crear=Sala.create_sala()
+        if crear == None:
+            return{"Error":"Ingrese Nombre servidor"},400
+        else:
+            return {'Msg':'Servidor creado con exito'},200
+
+        
+    
