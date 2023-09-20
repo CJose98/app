@@ -58,3 +58,25 @@ class User:
                 img_perfil = result[7]
             )
         return None
+    @classmethod
+    def crear_usuario(cls):
+        pass
+    @classmethod
+    def modificar_contra(cls):
+        pass
+    @classmethod
+    def modificar_nombre(cls):
+        pass
+    @classmethod
+    def modificar_usuario(cls):
+        pass
+    @classmethod
+    def modificar_apellido(cls):
+        pass
+    @classmethod
+    def modificar_correo(cls):
+        pass
+    @classmethod
+    def modificar_contra(cls):
+        pass
+    
