@@ -32,15 +32,15 @@ function getSala() {
        // data.forEach((campo) => {
         for (const key in data) {
             if (data.hasOwnProperty(key)) { 
-                const fila = tabla.insertRow();            
-           
-                if (key === "nombre_servidor") {                    
-                      const nombreCelda = fila.insertCell(0); 
-                      nombreCelda.textContent = data[key];
-                  }
+                const fila = tabla.insertRow();   
+                const servidor = data[key]; 
+
+                const nombreCelda = fila.insertCell(0); 
+                nombreCelda.textContent = servidor.nombre_servidor;         
+                  
 
                 fila.addEventListener('click', function () {
-                    const id = data.id;
+                    const id = servidor.id_servidor;
 
                     let contenedor2 = document.getElementById('contenedor2');
                     contenedor2.style.display = 'block';

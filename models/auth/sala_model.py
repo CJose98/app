@@ -19,22 +19,30 @@ class Sala:
         }
 
     @classmethod
-    def get(cls, sala):
+    def get(cls, user):
         query = """SELECT servidores.id_servidor, servidores.nombre_servidor
                 FROM Discor.servidores INNER JOIN Discor.usuarios
-                ON servidores.id_servidor = usuarios.id_usuario
+                ON servidores.propietario_id = usuarios.id_usuario
                 WHERE usuarios.correo = %(correo)s""" #  ver q sea una lista
                             
-        params = sala.__dict__
-        result = DatabaseConnection.fetch_one(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA O NO )
+        params = user.__dict__   #los datos del usuario logeado   #{"correo": user.correo} 
+        result = DatabaseConnection.fetch_all(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA) 
+    
+        if result:
+            if len(result) == 1:
+                # Si solo hay un resultado, devuélvelo como un solo objeto
+                return cls(
+                    id_servidor=result[0][0],
+                    nombre_servidor=result[0][1]
+                )
+            else:
+                # Si hay múltiples resultados, devuélvelos como una lista de objetos
+                return [cls(
+                    id_servidor=row[0],
+                    nombre_servidor=row[1]
+                ) for row in result]
 
-
-        if result is not None:
-            return cls(
-                id_servidor = result[0],
-                nombre_servidor = result[1]
-            )
-        return None
+        return [] #None
 
 
 
