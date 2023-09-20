@@ -40,6 +40,7 @@ class SalaController:
             return{"Error":"Ingrese Nombre servidor"},400
         else:
             return {'Msg':'Servidor creado con exito'},200
+        
 
         
     

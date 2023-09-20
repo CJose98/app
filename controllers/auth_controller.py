@@ -36,3 +36,15 @@ class UserController:
         session.pop('correo', None)
         return {"message": "Sesion cerrada"}, 200
     
+    @classmethod
+    def perfil_float(cls):
+            return render_template("perfil_float.html")
+    
+    @classmethod
+    def editar_contraseña(cls):
+            return render_template("editar_contraseña.html")
+    
+    @classmethod
+    def crear_user(cls):
+            return render_template("crear_user.html")
+    

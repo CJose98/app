@@ -8,7 +8,7 @@ class Sala:
     def __init__(self, **kwargs):
         self.id_servidor = kwargs.get('id_servidor')
         self.nombre_servidor = kwargs.get('nombre_servidor')
-        self.propietario_id=kwargs.get('nombre_propietario')
+        self.propietario_id=kwargs.get('propietario_id')
 
     def serialize(self):
         return  {
@@ -22,7 +22,7 @@ class Sala:
 
     @classmethod
     def get(cls, user):
-        query = """SELECT servidores.id_servidor, servidores.nombre_servidor
+        query = """SELECT servidores.id_servidor, servidores.nombre_servidor, servidores.propietario_id
                 FROM Discor.servidores INNER JOIN Discor.usuarios
                 ON servidores.propietario_id = usuarios.id_usuario
                 WHERE usuarios.correo = %(correo)s""" #  ver q sea una lista
@@ -35,13 +35,15 @@ class Sala:
                 # Si solo hay un resultado, devuélvelo como un solo objeto
                 return cls(
                     id_servidor=result[0][0],
-                    nombre_servidor=result[0][1]
+                    nombre_servidor=result[0][1],
+                    propietario_id=result[0][2]
                 )
             else:
                 # Si hay múltiples resultados, devuélvelos como una lista de objetos
                 return [cls(
                     id_servidor=row[0],
-                    nombre_servidor=row[1]
+                    nombre_servidor=row[1],
+                    nombre_servidor=row[2]
                 ) for row in result]
 
         return [] #None

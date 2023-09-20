@@ -25,3 +25,9 @@ auth_bp.route('/user_logeado', methods=['GET'])(UserController.show_profile)  #h
 auth_bp.route('/registro', methods=['GET'])(UserController.show_register)    #html de registro
 
 auth_bp.route('/logout', methods=['GET'])(UserController.logout)            # nada X
+
+auth_bp.route('/perfil_float', methods=['GET'])(UserController.perfil_float)            # html perfil
+
+auth_bp.route('/editar_contraseña', methods=['GET'])(UserController.editar_contraseña)            # html editar
+
+auth_bp.route('/crear_user', methods=['GET'])(UserController.crear_user)            # html editar

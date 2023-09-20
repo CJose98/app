@@ -9,7 +9,7 @@
 <body>
     <!--MENU LATERAL-->
     <div id="contenedor">
-        <ul>        
+        <ul>      
             <div id="logo">
                     <img src="../static/img/python.png" alt="logo"  width="40" height="40">
                     <img src="../static/img/github_.png" alt="logo" width="40" height="40">
@@ -24,19 +24,60 @@
                 </table>
             </div>
             <div id="message"></div>
-            
-            <li><img src="../static/img/agregar.png" alt="logo" class="user_l1" width="25" height="25" id="sala_nueva"></li>
-            <li><img src="../static/img/mundo.png" alt="logo" class="user_l2" width="25" height="25" id="todo_sala"></li>
+
+            <li><img src="../static/img/agregar.png" alt="logo" class="user_l1" id="crear_servidor" width="25" height="25" id="sala_nueva"></li>
+            <li><img src="../static/img/mundo.png" alt="logo" class="user_l2" id="buscar_servidor" width="25" height="25" id="todo_sala"></li>
 
             <div id="user">
-                <a href="./perfil_float.html"><img src="../static/img/usuario.png" alt="logo" width="25" height="25"></a></div>
+                <a href="/auth/crear_user"><img src="../static/img/usuario.png" alt="logo" width="25" height="25" ></a></div>
+            </div>
         </ul>
-
     </div>
-            
+
+    
+
+    <div id="contenedor2">
+        <div id="canal">
+            <table id="tabla_canal">
+                <tr>
+                    <th>canales</th>
+                </tr>
+            </table>
+        </div>  
+        <div id="crear_canal">
+            <button href="/auth/crear_user" id="c_canal">añadir</button>
+        </div>
+    </div>
+
+
+    
+           
+    
     <div id="contenido">
         <a> Aun no te has unido a un servidor <br> Intenta buscar uno o crea uno propio</a>
     </div>
+
+
+
+    <div id="busqueda">
+        <form>
+            <div class="input-box">
+                <input type="text" placeholder="Buscar servidor" required>
+                <button type="submit" class="btn">Buscar</button>
+            </div>    
+        </form>
+    </div>
+
+    <section class="grid-container">
+        <div class="item-grid"><img src="../static/img/servidor/libro.png" alt="logo" width="45" height="45"><br>Literatura<br>Fantastica</div>
+        <div class="item-grid"><img src="../static/img/servidor/camara.png" alt="logo"  width="45" height="45"><br>Locura<br>Cinematografica</div>
+        <div class="item-grid"><img src="../static/img/servidor/photo.png" alt="logo" width="45" height="45"><br>Relatos de<br>Viaje</div>
+        <div class="item-grid"><img src="../static/img/servidor/corazon.png" alt="logo"  width="45" height="45"><br>Salud y<br>Bienestar</div>
+        <div class="item-grid"><img src="../static/img/servidor/joystick.png" alt="logo" width="45" height="45"><br>Central de<br>Juegos</div>
+        <div class="item-grid"><img src="../static/img/servidor/sports.png" alt="logo"  width="45" height="45"><br>Fantasticos del<br>Deporte</div>
+        <div class="item-grid"><img src="../static/img/servidor/music.png" alt="logo"  width="45" height="45"><br>Caos<br>Musical</div>
+    </section>
+
 
     <script src="../static/salas.js"></script>
 </body>
