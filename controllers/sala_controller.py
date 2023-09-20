@@ -41,6 +41,10 @@ class SalaController:
         else:
             return {'Msg':'Servidor creado con exito'},200
         
+    @classmethod
+    def crear_user(cls):
+            return render_template("crear_user.html")
+        
 
         
     

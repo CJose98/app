@@ -30,4 +30,3 @@ auth_bp.route('/perfil_float', methods=['GET'])(UserController.perfil_float)    
 
 auth_bp.route('/editar_contraseña', methods=['GET'])(UserController.editar_contraseña)            # html editar
 
-auth_bp.route('/crear_user', methods=['GET'])(UserController.crear_user)            # html editar

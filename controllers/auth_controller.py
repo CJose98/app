@@ -44,7 +44,5 @@ class UserController:
     def editar_contraseña(cls):
             return render_template("editar_contraseña.html")
     
-    @classmethod
-    def crear_user(cls):
-            return render_template("crear_user.html")
+
     

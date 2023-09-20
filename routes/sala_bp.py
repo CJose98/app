@@ -10,3 +10,5 @@ sala_bp = Blueprint('sala_bp', __name__)
 sala_bp.route('/sala', methods=['GET'])(SalaController.show_sala)         #html de registro
 
 sala_bp.route('/logout', methods=['GET'])(SalaController.logout)            # nada X
+
+sala_bp.route('/crear_user', methods=['GET'])(SalaController.crear_user)            # html editar

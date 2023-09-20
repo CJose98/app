@@ -55,7 +55,7 @@ function getSala() {
 }
 
 /*  *** contenido_de_busqueda y GRID *** */
-let registro=document.getElementById('buscar_servidor');  //http://127.0.0.1:5000/auth/login
+let registro=document.getElementById('todo_sala');  //http://127.0.0.1:5000/auth/login
 registro.addEventListener('click', function(){
     
     
@@ -67,12 +67,21 @@ registro.addEventListener('click', function(){
     busqueda.style.display = 'block';
     grid.style.display = 'block';
 }); 
-btn_new_sala=document.getElementById('sala_nueva').addEventListener('click',function(){
+
+let sala_nueva=document.getElementById('sala_nueva');  //http://127.0.0.1:5000/auth/login
+sala_nueva.addEventListener('click', function(){
+
+    window.location.href = "/auth/crear_servidor";     // "registro.html"; // "/auth/user_logeado";
+
+}); 
+
+/*btn_new_sala=document.getElementById('sala_nueva').addEventListener('click',function(){
     Sala.create_sala()
 });
 btn_mostra_salas =document.getElementById('todo_sala').addEventListener('click',function(){
     Sala.get_all_salas()
-});
+}); */
+
 
 
 
