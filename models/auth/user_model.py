@@ -1,6 +1,7 @@
 from ...database import DatabaseConnection
 #from .user_role_model import UserRoleModel
 #from .user_status_model import UserStatusModel
+from flask import request
 
 class User:
 
@@ -58,25 +59,101 @@ class User:
                 img_perfil = result[7]
             )
         return None
+    ##------------------se crea los metodos de creacion y modificacion de items ----#
+
     @classmethod
     def crear_usuario(cls):
-        pass
+        sql="""INSERT INTO Discor.usuarios (nombre,
+                            apellido,
+                            correo,
+                            password,
+                            nombre_user,
+                            fecha_nac,
+                            img_perfil)
+        VALUES(%s,%s,%s,%s,%s,%s,%s,);"""
+        params=request.args.get("nombre",""),
+        request.args.get("apellido",""),
+        request.args.get("correo",""),
+        request.args.get("password",""),
+        request.args.get("nombre_user",""),
+        request.args.get("fecha_nac",""),
+        request.args.get("img_perfil","")
+
+        result=DatabaseConnection.execute_query(sql,params)
+
+        if result == None:
+            return False
+        else:
+            return True
     @classmethod
-    def modificar_contra(cls):
-        pass
+    def modificar_contra(id_usuario):
+        sql="""UPDATE Discor.usuarios SET password = %s WHERE id_usuario = %s;"""
+        params=request.args.get('password',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
+        
     @classmethod
-    def modificar_nombre(cls):
-        pass
+    def modificar_nombre(id_usuario):
+        sql="""UPDATE Discor.usuarios SET nombre = %s WHERE id_usuario=%s;"""
+        params=request.args.get('nombre',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
+        
     @classmethod
-    def modificar_usuario(cls):
-        pass
+    def modificar_nombre_user(id_usuario):
+        sql="""UPDATE Discor.usuarios SET nombre_user = %s WHERE id_usuario=%s;"""
+        params=request.args.get('nombre_user',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
+        
     @classmethod
-    def modificar_apellido(cls):
-        pass
+    def modificar_apellido(id_usuario):
+        sql="""UPDATE Discor.usuarios SET apellido = %s WHERE id_usuario=%s;"""
+        params=request.args.get('apellido',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
     @classmethod
-    def modificar_correo(cls):
-        pass
+    def modificar_correo(id_usuario):
+        sql="""UPDATE Discor.usuarios SET correo = %s WHERE id_usuario=%s;"""
+        params=request.args.get('correo',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
+    
+
     @classmethod
-    def modificar_contra(cls):
-        pass
+    def modificar_img_perfil(id_usuario):
+        sql="""UPDATE Discor.usuarios SET img_perfil = %s WHERE id_usuario=%s;"""
+        params=request.args.get('img_perfil',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True
+        
+    @classmethod
+    def modificar_fecha_nac(id_usuario):
+        sql="""UPDATE Discor.usuarios SET fecha_nac = %s WHERE id_usuario=%s;"""
+        params=request.args.get('fecha_nac',''),id_usuario
+        result=DatabaseConnection.execute_query(sql,params)
+        if result == None:
+            return False
+        else:
+             return True      
+        
+        
     
