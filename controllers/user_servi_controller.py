@@ -6,6 +6,6 @@ from flask import request, session, jsonify,render_template
 class User_servi_Controller:
     @classmethod
     def crear_servi():
-        return render_template():
+        return render_template()
         pass
    

@@ -53,3 +53,6 @@ function logout() {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
+btn_canal=document.getElementById('canal_new').addEventListener('click',function(){
+    cancelAnimationFrame.crear_canal()
+})
