@@ -8,3 +8,12 @@ class CanalController:
     def mostrar_todo():
         #        print(request)
         pass
+    @classmethod
+    def eliminar_canal():
+        pass
+    @classmethod
+    def mod_canal():
+        pass
+    @classmethod
+    def crear_canal():
+        pass

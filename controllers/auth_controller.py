@@ -22,7 +22,7 @@ class UserController:
         correo = session.get('correo')
         user = User.get(User(correo = correo))
         if user is None:
-            return {"message": "Usuario no encontrado"}, 404
+            return {"message": "Usuario no encontrado / Registrarse"}, 404
         else:
             return render_template("user_logeado.html", user=user)
             #return user.serialize(), 200 #cambiar debe redigir a la pagina

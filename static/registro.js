@@ -1,24 +1,26 @@
 window.addEventListener('load', function () {
-    getProfile();
+    getCrearuser();
 });
 
-document.getElementById("logout").addEventListener("click", logout);
+// document.getElementById("logout").addEventListener("click", logout);
 
-function getProfile() {
-    const url = "http://127.0.0.1:5000/auth/profile";
+function getCrearuser() {
+    const url = "http://127.0.0.1:5000/auth/registro";
     
     fetch(url, {
-        method: 'GET',
+        method: 'PUT',
         credentials: 'include'
     })
     .then(response => {
         if (response.status === 200) {
             return response.json().then(data => {
 
-                document.getElementById("username").innerText = data.username;
-                document.getElementById("email").innerText = data.email;
+                document.getElementById("email").innerText = data.correo;
+                document.getElementById("username").innerText = data.nombre_usuario;
                 document.getElementById("first_name").innerText = data.first_name;
                 document.getElementById("last_name").innerText = data.last_name;
+                document.getElementById("password").innerText = data.password;
+                document.getElementById("dia").innerText = data.fecha_nac;
             });
         } else {
             return response.json().then(data => {
