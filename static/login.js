@@ -12,12 +12,12 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     login();
 });
 
-
 function login() {
-    const data = {
-        correo: document.getElementById("correo").value,
-        nombre_user: document.getElementById("nombre_user").value,
-    };
+
+const data = {
+    correo: document.getElementById("correo").value,
+    nombre_user: document.getElementById("nombre_user").value,
+};
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 
