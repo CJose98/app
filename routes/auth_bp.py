@@ -18,7 +18,7 @@ def home():
         return render_template("home.html")
     
 
-
+auth_bp.route('/registro', methods=['GET','POST'])(UserController.show_register)    #html de registro O registr de una persona
 
 auth_bp.route('/user_logeado', methods=['GET'])(UserController.show_profile)  #html de logeado
 

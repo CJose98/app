@@ -59,32 +59,20 @@ class User:
                 img_perfil = result[7]
             )
         return None
-    ##------------------se crea los metodos de creacion y modificacion de items ----#
 
     @classmethod
-    def crear_usuario(cls):
-        sql="""INSERT INTO Discor.usuarios (nombre,
-                            apellido,
-                            correo,
-                            password,
-                            nombre_user,
-                            fecha_nac,
-                            img_perfil)
-        VALUES(%s,%s,%s,%s,%s,%s,%s,);"""
-        params=request.args.get("nombre",""),
-        request.args.get("apellido",""),
-        request.args.get("correo",""),
-        request.args.get("password",""),
-        request.args.get("nombre_user",""),
-        request.args.get("fecha_nac",""),
-        request.args.get("img_perfil","")
-
-        result=DatabaseConnection.execute_query(sql,params)
-
-        if result == None:
-            return False
-        else:
+    def crear_usuario(cls, user):              
+            query  = """INSERT INTO Discor.usuarios (nombre, apellido, correo, password, nombre_user, fecha_nac) VALUES (%(nombre)s,%(apellido)s,%(correo)s,%(password)s,%(nombre_user)s,%(fecha_nac)s)"""
+            params = user.__dict__
+            DatabaseConnection.execute_query(query, params=params)
             return True
+    
+
+
+
+
+
+
     @classmethod
     def modificar_contra(id_usuario):
         sql="""UPDATE Discor.usuarios SET password = %s WHERE id_usuario = %s;"""

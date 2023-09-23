@@ -29,6 +29,24 @@ class UserController:
 
     @classmethod
     def show_register(cls):
+        
+        if request.method == 'POST':
+            
+            data = request.json
+            user = User(
+                    nombre = data.get('nombre'),
+                    apellido = data.get('apellido'),
+                    correo = data.get('correo'),
+                    password = data.get('password'),
+                    nombre_user = data.get('nombre_user'),
+                    fecha_nac = data.get('fecha_nac')
+            )
+
+            if User.crear_usuario(user):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+                return jsonify({"message": "Registro completado"}), 200   #retornamos el numero
+            else:
+                return jsonify({"message": "Error al registrarse"}), 400 #401 no es
+        else:
             return render_template("registro.html")
     
     @classmethod
