@@ -3,7 +3,7 @@ from ..models.auth.msg_model import Msg
 
 from flask import request, session, jsonify,render_template
 
-class CanalController:
+class MsgController:
     @classmethod
     def mostrar_todo():
         #        print(request)
