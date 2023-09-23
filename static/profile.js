@@ -60,5 +60,15 @@ btn_canal=document.getElementById('canal_new').addEventListener('click',function
     Canal.crear_canal()
 })
 btn_mod_canal=document.getElementById('boton_mod').addEventListener('click', function(){
-    Canal.mod_canal()
+    Canal.mod_canal();
+})
+//se agrega la funcion de eliminar crear modificar msg
+btn_del_msg=document.getElementById('delete_canal').addEventListener('click',function(){
+    Msg.eliminar_msg();
+})
+btn_mod_msg=document.getElementById('mod_msg').addEventListener('click'),function(){
+    Msg.mod_msg();
+}
+btn_crear_msg=document.getElementById('crear_msg').addEventListener('click',function(){
+    Msg.crear_msg();
 })

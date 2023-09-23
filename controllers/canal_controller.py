@@ -13,7 +13,9 @@ class CanalController:
         pass
     @classmethod
     def mod_canal():
+        return render_template('../templates\modificar_canal.html')
         pass
     @classmethod
     def crear_canal():
+        return render_template('../templates\crear_canal.html')
         pass

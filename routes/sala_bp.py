@@ -11,5 +11,5 @@ sala_bp.route('/sala', methods=['GET'])(SalaController.show_sala)         #html 
 
 sala_bp.route('/logout', methods=['GET'])(SalaController.logout)            # nada X
 #se crea la bp para crear la sala(servidor) que no estaba echo - fijarse (crear _user )
-sala_bp.route('/crear_sala',methods=['PUT'])(SalaController.crear_servidor)# este bp faltaba
+sala_bp.route('/crear_servidor',methods=['PUT'])(SalaController.crear_servidor)# este bp faltaba
 sala_bp.route('/crear_user', methods=['GET'])(SalaController.crear_user)            # html editar
