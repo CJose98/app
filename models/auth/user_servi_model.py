@@ -3,7 +3,7 @@ from ...database import DatabaseConnection
 #from .user_status_model import UserStatusModel
 from flask import json, request
 
-class User_servi:
+class UserServi:
     def __init__(self,**kwargs):
         self.id_user_servi=kwargs.get('id_user_servi')
         self.usuario_id=kwargs.get('usuario_id')

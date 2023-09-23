@@ -54,5 +54,9 @@ function logout() {
     });
 }
 btn_canal=document.getElementById('canal_new').addEventListener('click',function(){
-    cancelAnimationFrame.crear_canal()
+    window.location.href = "/auth/crear_canal";
+    Canal.crear_canal()
+})
+btn_mod_canal=document.getElementById('boton_mod').addEventListener('click', function(){
+    Canal.mod_canal()
 })

@@ -4,7 +4,7 @@ from ...database import DatabaseConnection
 from flask import request
 from datetime import datetime
 
-class User:
+class Msg:
 
     def __init__(self, **kwargs):
         self.id_mensaje=kwargs.get('id_mensaje')
