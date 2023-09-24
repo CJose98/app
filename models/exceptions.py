@@ -63,4 +63,11 @@ class InsufficientStorage(HTTPException)    :
       })
       response.status_code=self.status_code
       return response   
-   
+# Esto lo habia echo celeste
+class InvalidDataError(CustomException):
+    def __init__(self, description='Invalid data'):
+        super().__init__(
+            status_code=400,
+            name="InvalidDataError",
+            description=description,
+        )   
