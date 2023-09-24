@@ -18,21 +18,21 @@ class CustomException(Exception):
         })
         response.status_code = self.status_code
         return response
-class FilmNotFound(Exception):
+class UserNotFound(Exception):
     
-    def __init__(self, status_code, name = "FilmNotFound", description = 'Error'): 
+    def __init__(self, status_code, name = "UserNotFound", description = 'Error'): 
         super().__init__()
         self.description = description
         self.name = name
         self.status_code = 404
 
-    def FilmNotFound(self):
+    def UserNotFound(self):
        response=jsonify({
           
         "error": {
         "code": self.status_code,
         "name": self.name,
-        "description": "Film with id {film_id} not found"
+        "description": "User with id {id_usuario} not found"
         }
         }
         )
