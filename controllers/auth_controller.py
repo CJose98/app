@@ -62,5 +62,11 @@ class UserController:
     def editar_contraseña(cls):
             return render_template("editar_contraseña.html")
     
+    # funcion modificar imagen de perfil
+    @classmethod
+    def mod_img_perfil():
+         return render_template('../templates\mod_img_perfil.html')
+
+    
 
     

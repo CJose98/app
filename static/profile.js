@@ -72,3 +72,7 @@ btn_mod_msg=document.getElementById('mod_msg').addEventListener('click'),functio
 btn_crear_msg=document.getElementById('crear_msg').addEventListener('click',function(){
     Msg.crear_msg();
 })
+// se agrega function modificar imagen al btn 
+btn_mod_img=document.getElementById('mod_img').addEventListener('click',function(){
+    User.modificar_img_perfil()
+})
