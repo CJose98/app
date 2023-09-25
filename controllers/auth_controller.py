@@ -48,6 +48,17 @@ class UserController:
                 return jsonify({"message": "Error al registrarse"}), 400 #401 no es
         else:
             return render_template("registro.html")
+        
+
+    """ Mostrar Perfil """
+    @classmethod
+    def mostrar_perfil(cls):
+        correo = session.get('correo')
+        user = User.get(User(correo = correo))
+        if user is None:
+            return {"message": "Usuario no encontrado"}, 404
+        else:
+            return user.serialize(), 200
     
     @classmethod
     def logout(cls):
@@ -69,6 +80,8 @@ class UserController:
     @classmethod
     def mod_contra():
          return render_template('editar_contraseña.html')
+    
+
     
 
     
