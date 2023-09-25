@@ -74,5 +74,18 @@ btn_crear_msg=document.getElementById('crear_msg').addEventListener('click',func
 })
 // se agrega function modificar imagen al btn 
 btn_mod_img=document.getElementById('mod_img').addEventListener('click',function(){
-    User.modificar_img_perfil()
+    User.modificar_img_perfil();
 })
+// se agrega la funcion al boton mod correo
+btn_correo=document.getElementById('mod_correo').addEventListener('click',function(){
+    User.modificar_correo();
+})
+//se agrega la funcion al btn apellido
+btn_ape=document.getElementById('mod_ape').addEventListener('click',function(){
+    User.modificar_apellido();
+})
+//se agrega la funcion al btn user_nombre
+btn_us_name=document.getElementById('mod_user_name').addEventListener('click',function(){
+    User.modificar_nombre_user();
+})
+

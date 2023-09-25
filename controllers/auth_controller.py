@@ -66,6 +66,10 @@ class UserController:
     @classmethod
     def mod_img_perfil():
          return render_template('../templates\mod_img_perfil.html')
+    @classmethod
+    def mod_contra():
+         return render_template('editar_contraseña.html')
+    
 
     
 
