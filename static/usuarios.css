@@ -23,13 +23,17 @@ body{
     border-radius: 10px;
     padding: 30px 40px;
 }
+.contenedor .input-box{
+    padding: 15px 5px;
+    border-radius: 10rem;
+    font-size: 30px;
+    border:none; 
+}
 
-#contenedor button{
+.contenedor button{
     text-align: center;
     padding: 5px 10px;
-    position: absolute; /* Hacemos que el elemento sea posicionado de forma absoluta */
-    bottom: 0; /* Lo alineamos en la parte inferior del*/
-    width: 90%; /* para que ocupe todo el ancho del contenedor */
+    width: 75%; /* para que ocupe todo el ancho del contenedor */
 }
 button{
     padding: 10px 10px;
