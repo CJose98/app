@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Correo</title>
-    <link rel="stylesheet" href="../static/usuarios.css">
+    <link rel="stylesheet" href="../static/usuario.css">
 </head>
 <body>
+
     <div class="contenedor">  <!--nombre_servidor, propietario_id-->
-        <form action="put">
-            <label for="">Correo Nuevo</label>
-            <input type="text" name="" id="servidor"><br>
+        <form id="form_correo">
+            <h1>Modificar correo</h1>
+            <div class="input-box">
+                <input type="text" id="n_correo" name="n_correo" placeholder="nuevo correo" required>
+            </div>
             
-            <button id="mod_correo">Confirmar</button><button id="volver_atras" style="float: right;"> <a href="../templates\user_logeado.html"></a>Cerrar </button>
+            <button type="submit">Confirmar</button>          
         </form>
+        <p></p>
+        <button id="volver_perfil">salir</button>
     </div>
     
+    <script src="../static/modificacion.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 /*  *** REGISTRAR *** */
 let registro=document.getElementById('registro');  //http://127.0.0.1:5000/auth/login
 registro.addEventListener('click', function(){
@@ -6,18 +5,19 @@ registro.addEventListener('click', function(){
     window.location.href = "/auth/registro";     // "registro.html"; // "/auth/user_logeado";
 
 }); 
+
  /* *** LOGIN *** */
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
     login();
 });
 
-function login() {
 
-const data = {
-    correo: document.getElementById("correo").value,
-    nombre_user: document.getElementById("nombre_user").value,
-};
+function login() {
+    const data = {
+        correo: document.getElementById("correo").value,
+        password: document.getElementById("password").value,
+    };
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 

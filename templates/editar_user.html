@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
-    <link rel="stylesheet" href="../static/usuarios.css">
+    <link rel="stylesheet" href="../static/usuario.css">
 </head>
 <body>
-
     <div class="contenedor">  <!--nombre_servidor, propietario_id-->
-        <form action="put">
-            <label for="">Nombre de Usuario</label>
-            <input type="text" name="" id="servidor"><br>
-            
-            <button id="mod_user">Confirmar</button><button id="volver_atras" style="float: right;"> <a href="../templates\user_logeado.html"></a>Cerrar </button>
+        <form id="form_nombre">
+            <h1>Modificar nombre</h1>
+            <div class="input-box">
+                <input type="text" id="n_nombre" name="n_nombre" placeholder=" Nuevo Nombre" required>
+            </div>
+
+            <p></p> 
+            <button type="submit">Confirmar</button>          
         </form>
+        
+        <p></p>
+        <button id="volver_perfil">salir</button>
     </div>
-    
+
+   <script src="../static/modificacion.js"></script>
 </body>
 </html>

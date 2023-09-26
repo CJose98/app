@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/usuario.css">
-    <title>Document</title>
+    <title>Cambio_contraseña</title>
+    <link rel="stylesheet" href="../static/usuario.css"> 
 </head>
-
 <body>
-    
-    <div class="contenedor">
-            <form action="put">
-                <label for="">Password Actual </label>
-                <input type="text" name="" id="pass"><br>
-                <label for="">Nuevo Pasword</label>
-                <input type="text" name="" id=""><br>
-                <button id="pasw_new">Confirmar</button>
-            </form>
-   </div>
 
+    <div class="contenedor">  <!--nombre_servidor, propietario_id-->
+        <form id="form_contra">
+            <h1>Modificar Contraseña</h1>
+            <div class="input-box">
+                <input type="text" id="n_password" name="n_password" placeholder="Password Actual" required>
+            </div>
+            <div class="input-box">
+                <input type="text" id="n_password" name="n_password" placeholder="Nuevo Pasword" required>
+            </div>
+
+            <p></p> 
+            <button type="submit">Confirmar</button>          
+        </form>
+
+        <p></p>
+        <button id="volver_perfil">salir</button>
+    </div>
+
+   <script src="../static/modificacion.js"></script>
 </body>
 </html>

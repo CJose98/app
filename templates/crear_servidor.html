@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/usuarios.css">
+    <title>Crear_servidor</title>
+    <link rel="stylesheet" href="../static/usuario.css">
 </head>
 <body>
 
     <div class="contenedor">  <!--nombre_servidor, propietario_id-->
-        <form action="put">
-            <label for="">Nombre Servidor</label>
-            <input type="text" name="" id="servidor"><br><br><br>
-            <!-- <label for="">Propietario_id</label>
-            <input type="text" name="" id="identificador"><br> -->
-            <button id="pasw_new">Confirmar</button><button style="float: right;"><a href="..\templates\user_logeado.html"></a> Volver</button>
-        </form>
-</div>
-    
-</body>
-<script src=""></script>
+        <form id="Crear_Form">
+            <h1>Crear Servidor</h1>
 
+            <div class="input-box">
+                <input type="text" id="servidor" name="servidor" placeholder="servidor" required>
+            </div>
+
+            <button type="submit" class="btn">Confirmar</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="../static/crear_servidor.js"></script>
+</body>
 </html>

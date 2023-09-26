@@ -13,20 +13,40 @@ def home():
         if status_code == 200:
             return jsonify({"message": "Sesion iniciada"}), 200
         else:
-            return jsonify({"message": "Usuario o contraseña incorrectos"}), 401
+            return jsonify({"message": "Usuario o contraseña incorrectos / registrarse"}), 401
     else:
         return render_template("home.html")
     
 
-auth_bp.route('/registro', methods=['GET','POST'])(UserController.show_register)    #html de registro O registr de una persona
 
-auth_bp.route('/user_logeado', methods=['GET'])(UserController.show_profile)  #html de logeado
+auth_bp.route('/user_logeado', methods=['GET'])(UserController.user_logeado)  
 
-auth_bp.route('/registro', methods=['GET'])(UserController.show_register)    #html de registro
+auth_bp.route('/registro', methods=['GET','POST'])(UserController.show_register)   
 
-auth_bp.route('/logout', methods=['GET'])(UserController.logout)            # nada X
+auth_bp.route('/perfil_float', methods=['GET'])(UserController.perfil_float)         
 
-auth_bp.route('/perfil_float', methods=['GET'])(UserController.perfil_float)            # html perfil
+auth_bp.route('/mostrar_perfil', methods=['GET'])(UserController.mostrar_perfil) 
 
+auth_bp.route('/logout', methods=['GET'])(UserController.logout)          
+
+
+
+
+
+auth_bp.route('/mod_img_perfil', methods=['GET'])(UserController.mod_img_perfil)            # html editar
+auth_bp.route('/editar_user_name', methods=['GET'])(UserController.editar_user_name)            # html editar
+auth_bp.route('/editar_user', methods=['GET'])(UserController.editar_user)            # html editar
+auth_bp.route('/editar_apellido', methods=['GET'])(UserController.editar_apellido)            # html editar
+auth_bp.route('/editar_correo', methods=['GET'])(UserController.editar_correo)            # html editar
 auth_bp.route('/editar_contraseña', methods=['GET'])(UserController.editar_contraseña)            # html editar
+
+
+
+auth_bp.route('/mod_foto', methods=['PUT'])(UserController.mod_foto)            # html modificar
+auth_bp.route('/mod_usuario', methods=['PUT'])(UserController.mod_usuario)            # html modificar
+auth_bp.route('/mod_nombre', methods=['PUT'])(UserController.mod_nombre)            # html modificar
+auth_bp.route('/mod_apellido', methods=['PUT'])(UserController.mod_apellido)            # html modificar
+auth_bp.route('/mod_correo', methods=['PUT'])(UserController.mod_correo)            # html modificar
+auth_bp.route('/mod_password', methods=['PUT'])(UserController.mod_password)            # html modificar
+
 

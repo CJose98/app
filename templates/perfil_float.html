@@ -9,24 +9,28 @@
 <body>
     <div class="contenedor">
 
-            <div id="message">
-                <p><strong>Perfil:</strong> <span id="img_perfil"> <span><a href="../templates/mod_img_perfil.html"><button>Modificar</button></a>
+            <div id="message">   
+                <strong>Perfil :</strong> <img id="img_perfil" src="" alt="Imagen de perfil" width="300" height="100"><br><button id="perfil">Modificar</button>
+                <!--
+                <p><strong>Perfil:</strong><strong><span id="img_perfil"></span><span><button id="perfil">Modificar</button>
                 </span></p>
-                <p><strong>Nombre de usuario:</strong> <span id="nombre_user"></span> <span><a href="../templates/editar_user_name.html"><button>Modificar</button></a>
+                -->
+
+                <p><strong>Nombre de usuario:</strong> </strong> <span id="nombre_user"></span><span><button id="user">Modificar</button>
                 </span></p>
-                <p><strong>Nombre:</strong> <span id="nombre"></span> <span><a href="../templates/editar_user.html"><button>Modificar</button></a>
+                <p><strong>Nombre:</strong> <span id="nombre"></span><span><button id="name">Modificar</button>
                 </span></p>
-                <p><strong>Apellido:</strong> <span id="apellido"></span> <span><a href="../templates/editar_apellido.html"><button>Modificar</button></a>
+                <p><strong>Apellido:</strong> <span id="apellido"></span><span><button id="last_name">Modificar</button>
                 </span></p>
-                <p><strong>Email:</strong> <span id="correo"></span> <span><a href="../templates/editar_correo.html"><button>Modificar</button></a>
+                <p><strong>Email:</strong> <span id="correo"></span><span><button id="email">Modificar</button>
                 </span></p>
 
             </div>
-                <p><strong><a href="/auth/editar_contraseña"></strong> <span id="password"></span> <span><button>Cambiar contraseña</button>
-                </span></p>
+                <button id="password">Cambiar contraseña</button>
+                <p></p>
+                <button id="volver_pantalla">salir</button>
 
 
-            <button id="logout">Logout</button>
     </div>
 
     <script src="../static/modificacion.js"></script>

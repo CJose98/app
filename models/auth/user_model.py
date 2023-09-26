@@ -1,7 +1,4 @@
 from ...database import DatabaseConnection
-#from .user_role_model import UserRoleModel
-#from .user_status_model import UserStatusModel
-from flask import request
 
 class User:
 
@@ -13,7 +10,7 @@ class User:
         self.password = kwargs.get('password')
         self.nombre_user = kwargs.get('nombre_user')
         self.fecha_nac = kwargs.get('fecha_nac')
-        self.img_perfil = kwargs.get('fecha_nac')
+        self.img_perfil = kwargs.get('img_perfil')
 
     def serialize(self):
         return {
@@ -24,9 +21,7 @@ class User:
             "password": self.password,
             "nombre_user": self.nombre_user,
             "fecha_nac": self.fecha_nac,
-            "img_perfil": self.img_perfil  #faltaba sacar la coma
-            #"status": UserStatusModel.get(UserStatusModel(status_id = self.status_id)).serialize(),
-            #"role": UserRoleModel.get(UserRoleModel(role_id = self.role_id)).serialize()
+            "img_perfil": self.img_perfil 
         }
 
     @classmethod
@@ -49,7 +44,7 @@ class User:
 
         if result is not None:
             return cls(
-                id_user = result[0],
+                id_usuario = result[0],
                 nombre = result[1],
                 apellido = result[2],
                 correo = result[3],
@@ -59,7 +54,8 @@ class User:
                 img_perfil = result[7]
             )
         return None
-
+    
+    
     @classmethod
     def crear_usuario(cls, user):              
             query  = """INSERT INTO Discor.usuarios (nombre, apellido, correo, password, nombre_user, fecha_nac) VALUES (%(nombre)s,%(apellido)s,%(correo)s,%(password)s,%(nombre_user)s,%(fecha_nac)s)"""
@@ -67,81 +63,37 @@ class User:
             DatabaseConnection.execute_query(query, params=params)
             return True
     
-
-
-
-
-
-
     @classmethod
-    def modificar_contra(id_usuario):
-        sql="""UPDATE Discor.usuarios SET password = %s WHERE id_usuario = %s;"""
-        params=request.args.get('password',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
-        
-    @classmethod
-    def modificar_nombre(id_usuario):
-        sql="""UPDATE Discor.usuarios SET nombre = %s WHERE id_usuario=%s;"""
-        params=request.args.get('nombre',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
-        
-    @classmethod
-    def modificar_nombre_user(id_usuario):
-        sql="""UPDATE Discor.usuarios SET nombre_user = %s WHERE id_usuario=%s;"""
-        params=request.args.get('nombre_user',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
-        
-    @classmethod
-    def modificar_apellido(id_usuario):
-        sql="""UPDATE Discor.usuarios SET apellido = %s WHERE id_usuario=%s;"""
-        params=request.args.get('apellido',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
-    @classmethod
-    def modificar_correo(id_usuario):
-        sql="""UPDATE Discor.usuarios SET correo = %s WHERE id_usuario=%s;"""
-        params=request.args.get('correo',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
+    def mod_perfil(cls, params):            
+            query  = """UPDATE Discor.usuarios SET img_perfil = %(img_perfil)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
     
-
     @classmethod
-    def modificar_img_perfil(id_usuario):
-        sql="""UPDATE Discor.usuarios SET img_perfil = %s WHERE id_usuario=%s;"""
-        params=request.args.get('img_perfil',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True
-        
-    @classmethod
-    def modificar_fecha_nac(id_usuario):
-        sql="""UPDATE Discor.usuarios SET fecha_nac = %s WHERE id_usuario=%s;"""
-        params=request.args.get('fecha_nac',''),id_usuario
-        result=DatabaseConnection.execute_query(sql,params)
-        if result == None:
-            return False
-        else:
-             return True      
-        
-        
+    def mod_user(cls, params):            
+            query  = """UPDATE Discor.usuarios SET nombre_user = %(nombre_user)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
     
+    @classmethod
+    def mod_nombre(cls, params):            
+            query  = """UPDATE Discor.usuarios SET nombre = %(nombre)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
+    
+    @classmethod
+    def mod_apellido(cls, params):            
+            query  = """UPDATE Discor.usuarios SET apellido = %(apellido)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
+    @classmethod
+    def mod_correo(cls, params):            
+            query  = """UPDATE Discor.usuarios SET correo = %(correo)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
+    
+    @classmethod
+    def mod_contra(cls, params):            
+            query  = """UPDATE Discor.usuarios SET correo = %(correo)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True

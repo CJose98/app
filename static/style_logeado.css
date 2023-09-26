@@ -9,6 +9,8 @@ body {
     background-position: center;
 }
 
+/*  LATERAL */
+
 #contenedor{
     position: fixed; /*posicion fija*/
     width: 200px;
@@ -18,6 +20,7 @@ body {
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
     
 }
 
@@ -25,6 +28,7 @@ body {
     text-align: center;
     border-bottom: 3px solid rgba(17, 16, 16, 0.3); /*linias de separacion*/
     padding: 10px 10px;
+    cursor: pointer;
 }
 
 #contenedor  ul li{      /* DEBO SACARLO SI NO ES ENCESARIO:  REVISAR*/
@@ -43,7 +47,7 @@ body {
 }
 
 
-/* USER LOGUEADO */
+/* USER LOGUEADO - PERO SIN SERVIDOR*/
 
 #contenido{
     display: flex;           /*Eleigir el modelo de diseño*/
@@ -66,6 +70,7 @@ body {
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
 }
 
 
@@ -100,53 +105,16 @@ body {
 
 
 
-
-
-/* TODOS SERVIDORES */
-
-.grid-container{
-    display: grid;
-    grid-template-columns:2fr 2fr 2fr;    /*altura de columas*/
-    grid-template-rows: 5rem 5rem 5rem;  /*ancho de las filas*/
-
-    grid-column-gap: 5%;                /*espaciado de las columnas*/
-    grid-row-gap:5%;                  /*espaciado de las filas*/
-
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-
-    padding: 50px 0px 0px 250px;
-
-}
-.item-grid{
-    text-align: center; 
-    font-size: 15px;
-    margin: 10px 10px;
-    position: relative;
-    border-radius: 3rem;
-
-
-    padding: 5px 3px 3px 5px;
-    background: transparent;
-    backdrop-filter: blur(3px);
-    cursor: pointer;
-}
-
-
-
-
-
-
 /* CONTENEDOR 2 */
 
 #contenedor2{
     display: none;
-    position: absolute;
+    position: fixed; /*posicion fija*/
+    /*position: absolute;*/ /* NOS PODEMOS MOVER CON UNA LINIA  <-------------------------------------------------> */
     left: 210px;  /*lo movemos a la derecha*/
     width: 200px;
-    height: 100%;
+    height: 95%;
+    border-radius: 2rem;
 
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -179,10 +147,11 @@ body {
     background: rgba(168, 14, 179, 0.7);
 }
 
+/*CREAR CANAL*/
 #contenedor2 #crear_canal{
     text-align: center;
-    padding: 15px 10px;
-    position: absolute; /* Hacemos que el elemento sea posicionado de forma absoluta */
+    padding: 30px 10px;
+    position: absolute; /* Hacemos que el elemento sea posicionado de forma fija */
     bottom: 0; /* Lo alineamos en la parte inferior del*/
     width: 90%; /* para que ocupe todo el ancho del contenedor */
 }
@@ -199,3 +168,49 @@ body {
 #contenedor2 #c_canal:hover{
     background: rgba(168, 14, 179, 0.7);
 }
+
+
+
+
+
+/* TODOS SERVIDORES */
+#busqueda{
+    justify-content: center; /*Controla la alineación de los elementos en el eje principal     */
+    align-items: center;     /*Determina la alineación de los elementos en el eje secundario*/
+    display: none;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns:2fr 2fr 2fr;    /*altura de columas*/
+    grid-template-rows: 5rem 5rem 5rem;  /*ancho de las filas*/
+
+    grid-column-gap: 5%;                /*espaciado de las columnas*/
+    grid-row-gap:5%;                  /*espaciado de las filas*/
+
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    padding: 5px 0px 0px 250px; 
+
+    display: none;
+}
+
+
+.item-grid{
+    text-align: center; 
+    font-size: 5px;
+    margin: 5px 5px;
+    position: relative;
+    border-radius: 3rem;
+
+
+    padding: 5px 3px 3px 5px;
+    background: transparent;
+    backdrop-filter: blur(3px);
+    cursor: pointer;   
+}
+
+
