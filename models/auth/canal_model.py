@@ -20,9 +20,8 @@ class Canal:
     @classmethod
     def get(cls, params):
         query = """SELECT canales.id_canal, canales.nombre_canal, canales.servidor_id, canales.creador_id
-                FROM Discor.canales INNER JOIN Discor.usuarios
-                ON canales.creador_id = usuarios.id_usuario
-                WHERE usuarios.correo = %(correo)s AND canales.servidor_id = %(servidor_id)s"""
+                FROM Discor.canales
+                WHERE canales.servidor_id = %(servidor_id)s"""
                             
         #params = (user, id_servi)  
         result = DatabaseConnection.fetch_all(query, params=params) #   =params

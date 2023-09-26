@@ -18,8 +18,8 @@ class CanalController:
         if user is None:
             return {"message": "Usuario no encontrado"}, 404
         else:
-            salas = Canal.get({"correo": correo, "servidor_id": servi_id})  # Obtiene una lista de instancias de sala Canal.get({"correo": correo, "servidor_id": servi_id})
-
+            salas = Canal.get({"servidor_id": servi_id})  # Obtiene una lista de instancias de sala Canal.get({"correo": correo, "servidor_id": servi_id})
+            
             if salas:
                 if isinstance(salas, Canal):
                     salas = [salas]  # Si salas es un solo objeto Sala, se convierte en una lista

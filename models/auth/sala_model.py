@@ -16,12 +16,14 @@ class Sala:
 
     @classmethod
     def get(cls, user):
+
         query = """SELECT servidores.id_servidor, servidores.nombre_servidor, servidores.propietario_id
-                FROM Discor.servidores INNER JOIN Discor.usuarios
-                ON servidores.propietario_id = usuarios.id_usuario
-                WHERE usuarios.correo = %(correo)s""" #  ver q sea una lista
+                FROM Discor.servidores
+                INNER JOIN Discor.user_servi
+                ON servidores.id_servidor = user_servi.servidor_id
+                WHERE user_servi.usuario_id =  %(id_usuario)s""" #  ver q sea una lista
                             
-        params = user.__dict__   #los datos del usuario logeado   #{"correo": user.correo} 
+        params = user  #los datos del usuario logeado   #{"correo": user.correo} 
         result = DatabaseConnection.fetch_all(query, params=params) #fetch_all (DEBE OBTENER UNA LISTA) 
     
         if result:

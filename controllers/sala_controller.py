@@ -8,10 +8,20 @@ class SalaController:
     def show_sala(cls):
         correo = session.get('correo')                         
         user = User(correo=correo) #user = Sala.get(User(correo = correo))
+
+         # método para obtener el usuario a partir del correo en la sesión
+        b_user = User()
+        b_user.correo = correo
+        b_user = User.get(b_user)  # Utiliza el método get para obtener el usuario completo
+
+
+        id_usuario = b_user.id_usuario # Obtiene el id del usuario encontrado
+        print("Id USUARIO:", id_usuario)
+
         if user is None:
             return {"message": "Usuario no encontrado"}, 404
         else:
-            salas = Sala.get(user)  # Obtiene una lista de instancias de sala
+            salas = Sala.get({"id_usuario": id_usuario})  # Obtiene una lista de instancias de sala
 
             if salas:
                 if isinstance(salas, Sala):
