@@ -60,7 +60,8 @@ volver_pantalla.addEventListener('click', function(){
 let perfil=document.getElementById('perfil'); 
 perfil.addEventListener('click', function(){
 
-    window.location.href = "/auth/mod_img_perfil";    
+    window.location.href = "/auth/mod_img_perfil"; 
+       
 
 }); 
 /*  *** nombre_user *** */
