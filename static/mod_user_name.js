@@ -12,7 +12,7 @@ function Modificar_user_name() {
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 
-    fetch("http://127.0.0.1:5000/auth/editar_user_name", {/*fijate si esta bien la direccion que le pase a cada uno */
+    fetch("http://127.0.0.1:5000/auth/mod_usuario", {/*fijate si esta bien la direccion que le pase a cada uno */
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ function Modificar_nombre() {
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 
-    fetch("http://127.0.0.1:5000/auth/editar_nombre", {
+    fetch("http://127.0.0.1:5000/auth/mod_nombre", {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

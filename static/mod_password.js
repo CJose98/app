@@ -1,18 +1,18 @@
-/* *** MODIFICAR APELLIDO *** */
-document.getElementById("Form_apellido").addEventListener("submit", function (event) {
+/* *** MODIFICAR FOTO PERFIL *** */
+document.getElementById("Form_contra").addEventListener("submit", function (event) {
     event.preventDefault();
-    Modificar_apellido();
+    Modificar_contra();
 });
 
 
-function Modificar_apellido() {
+function Modificar_contra() {
     const data = {
-        n_foto: document.getElementById("n_apellido").value,
+        n_foto: document.getElementById("n_contra").value,
     };
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 
-    fetch("http://127.0.0.1:5000/auth/mod_apellido", {
+    fetch("http://127.0.0.1:5000/auth/mod_password", {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

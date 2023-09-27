@@ -12,7 +12,7 @@ function Modificar_correo() {
 
     console.log("Datos del formulario:", data); /*ayuda en consola */
 
-    fetch("http://127.0.0.1:5000/auth/editar_correo", {
+    fetch("http://127.0.0.1:5000/auth/mod_correo", {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
