@@ -5,30 +5,34 @@ class UserController:
 
     @classmethod
     def login(cls):
-        data = request.json
-        user = User(
-            correo = data.get('correo'),
-            password = data.get('password')
-        )
+        if request.method == 'POST':
+            
+            data = request.json
+            user = User(
+                correo = data.get('correo'),
+                password = data.get('password')
+            )
 
-        if User.is_registered(user):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+            if User.is_registered(user):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
 
-            # Almacena el correo y el nombre de usuario en la sesión
-            session['correo'] = data.get('correo')
+                # Almacena el correo y el nombre de usuario en la sesión
+                session['correo'] = data.get('correo')
 
-            # Obtén el nombre de usuario del objeto user y almacénalo en la sesión
-            correo = session.get('correo')                         
+                # Obtén el nombre de usuario del objeto user y almacénalo en la sesión
+                correo = session.get('correo')                         
 
-            # método para obtener el usuario a partir del correo en la sesión
-            b_user = User()
-            b_user.correo = correo
-            b_user = User.get(b_user)  # Utiliza el método get para obtener el usuario completo
-            nombre = b_user.nombre # Obtiene el id del usuario encontrado
-            session['nombre'] = nombre 
+                # método para obtener el usuario a partir del correo en la sesión
+                b_user = User()
+                b_user.correo = correo
+                b_user = User.get(b_user)  # Utiliza el método get para obtener el usuario completo
+                nombre = b_user.nombre # Obtiene el id del usuario encontrado
+                session['nombre'] = nombre 
 
-            return jsonify({"message": "Sesion iniciada"}), 200
+                return jsonify({"message": "Sesion iniciada"}), 200
+            else:
+                return jsonify({"message": "Usuario o contraseña incorrectos"}), 401
         else:
-            return jsonify({"message": "Usuario o contraseña incorrectos"}), 401
+            return render_template("home.html")  # user=user) 
 
     @classmethod
     def user_logeado(cls):
