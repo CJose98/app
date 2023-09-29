@@ -33,11 +33,11 @@ class SalaController:
                     serialized_salas[f"sala{index}"] = sala.serialize()
                 return jsonify(serialized_salas), 200
             
-            if not salas:
+            if salas:
                 return jsonify({"message": "Usuario no tiene servidores"}), 200
             
             else:
-                return jsonify({"message": "No se encontraron salas"}), 404
+                return jsonify({"message": "No se encontraron servidores"}), 404
             
     
     @classmethod
