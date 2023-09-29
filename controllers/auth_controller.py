@@ -12,7 +12,20 @@ class UserController:
         )
 
         if User.is_registered(user):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+
+            # Almacena el correo y el nombre de usuario en la sesión
             session['correo'] = data.get('correo')
+
+            # Obtén el nombre de usuario del objeto user y almacénalo en la sesión
+            correo = session.get('correo')                         
+
+            # método para obtener el usuario a partir del correo en la sesión
+            b_user = User()
+            b_user.correo = correo
+            b_user = User.get(b_user)  # Utiliza el método get para obtener el usuario completo
+            nombre = b_user.nombre # Obtiene el id del usuario encontrado
+            session['nombre'] = nombre 
+
             return jsonify({"message": "Sesion iniciada"}), 200
         else:
             return jsonify({"message": "Usuario o contraseña incorrectos"}), 401
@@ -20,11 +33,14 @@ class UserController:
     @classmethod
     def user_logeado(cls):
         correo = session.get('correo')
+        nombre = session.get('nombre')
+        print("USER LOGEADO*****", nombre)
+
         user = User.get(User(correo = correo))
         if user is None:
             return {"message": "Usuario no encontrado"}, 404
         else:
-            return render_template("user_logeado.html", user=user) 
+            return render_template("user_logeado.html", nombre=nombre, correo=correo)  # user=user) 
         
 
     """ CREAR REGISTRO """
@@ -86,6 +102,10 @@ class UserController:
     def editar_contraseña(cls):
             return render_template("editar_contraseña.html")
     
+    @classmethod
+    def grid(cls):
+            return render_template("grid.html")
+    
         
     @classmethod
     def logout(cls):
@@ -132,14 +152,14 @@ class UserController:
         
 
         
-    """MODIFICAR USUARIO"""
+    """MODIFICAR USUARIO""" 
     @classmethod
     def mod_usuario(cls):
 
         if request.method == 'PUT':
             
             data = request.json
-            nombre_user = data.get('n_user') # es con coma o sin coma
+            nombre_user = data.get('n_user') # es con coma o sin coma 
 
             correo = session.get('correo')
 
@@ -154,11 +174,11 @@ class UserController:
 
 
                 if User.mod_user({"nombre_user": nombre_user, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
-                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                    return jsonify({"message": "Modificado el usuario"}), 200   #retornamos el numero
                 else:
-                    return jsonify({"message": "Error al crear"}), 400 #401 no es
+                    return jsonify({"message": "Error al modificar el nombre"}), 400 #401 no es
             else:
-                return jsonify({"message": "Usuario no encontrado"}), 404
+                return jsonify({"message": "Usuario no Modificado"}), 404
         else:
             return jsonify({"message": "Error 400"}), 400 
         
@@ -185,11 +205,11 @@ class UserController:
 
 
                 if User.mod_nombre({"nombre": nombre, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
-                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                    return jsonify({"message": "Modificado el nombre"}), 200   #retornamos el numero
                 else:
-                    return jsonify({"message": "Error al crear"}), 400 #401 no es
+                    return jsonify({"message": "Error al Modificar"}), 400 #401 no es
             else:
-                return jsonify({"message": "Usuario no encontrado"}), 404
+                return jsonify({"message": "Usuario no Modificado"}), 404
         else:
             return jsonify({"message": "Error 400"}), 400 
         
@@ -216,11 +236,11 @@ class UserController:
 
 
                 if User.mod_apellido({"apellido": apellido, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
-                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                    return jsonify({"message": "Apellido Creado"}), 200   #retornamos el numero
                 else:
-                    return jsonify({"message": "Error al crear"}), 400 #401 no es
+                    return jsonify({"message": "Error al Modificar"}), 400 #401 no es
             else:
-                return jsonify({"message": "Usuario no encontrado"}), 404
+                return jsonify({"message": "Usuario no Modificado"}), 404
         else:
             return jsonify({"message": "Error 400"}), 400 
         
@@ -232,7 +252,7 @@ class UserController:
         if request.method == 'PUT':
             
             data = request.json
-            correo = data.get('n_correo') # es con coma o sin coma
+            correoo = data.get('n_correo') # es con coma o sin coma
 
             correo = session.get('correo')
 
@@ -246,12 +266,12 @@ class UserController:
                 print("correo", correo, "id user:", id_usuario)
 
 
-                if User.mod_apellido({"correo": correo, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
-                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                if User.mod_correo({"correo": correoo, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+                    return jsonify({"message": "Correo Modificado"}), 200   #retornamos el numero
                 else:
-                    return jsonify({"message": "Error al crear"}), 400 #401 no es
+                    return jsonify({"message": "Error al Modificar"}), 400 #401 no es
             else:
-                return jsonify({"message": "Usuario no encontrado"}), 404
+                return jsonify({"message": "Correo no encontrado"}), 404
         else:
             return jsonify({"message": "Error 400"}), 400 
         
@@ -262,7 +282,8 @@ class UserController:
         if request.method == 'PUT':
             
             data = request.json
-            password = data.get('n_password') # es con coma o sin coma
+            a_password = data.get('a_password') # es con coma o sin coma
+            n_password = data.get('n_password') # es con coma o sin coma
 
             correo = session.get('correo')
 
@@ -271,17 +292,19 @@ class UserController:
             user.correo = correo
             user = User.get(user)  # Utiliza el método get para obtener el usuario completo
 
-            if user:
+            password = user.password # Obtiene el id del usuario encontrado
+
+            if n_password:
                 id_usuario = user.id_usuario # Obtiene el id del usuario encontrado
-                print("password", password, "id user:", id_usuario)
+                print("password", n_password, "id user:", id_usuario)
 
 
-                if User.mod_contra({"password": password, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
-                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                if User.mod_contra({"password": n_password, "id_usuario": id_usuario}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+                    return jsonify({"message": "Contra Modificada"}), 200   #retornamos el numero
                 else:
-                    return jsonify({"message": "Error al crear"}), 400 #401 no es
+                    return jsonify({"message": "Error al Modificar"}), 400 #401 no es
             else:
-                return jsonify({"message": "Usuario no encontrado"}), 404
+                return jsonify({"message": "Password no Modificado"}), 404
         else:
             return jsonify({"message": "Error 400"}), 400 
 

@@ -11,7 +11,7 @@ class CanalController:
         print("id_servi ****:", servi_id)   
         correo = session.get('correo')
         print("correo ****:", correo)                         
-        user = User(correo=correo) #user = Sala.get(User(correo = correo))
+        user = User(correo=correo) #user = Sala.get(User(correo = correo)) 
         print("user ****:", user)  
 
 
@@ -39,11 +39,14 @@ class CanalController:
 
     @classmethod
     def crear_canal(cls):
+        correo = session.get('correo')
+        nombre = session.get('nombre')
+        print("DATOS", correo, " , ", nombre)
 
         if request.method == 'POST':
             
             data = request.json
-            canal = data.get('canal') # es con coma o sin coma
+            canal = data.get('canal') # es con coma o sin coma 
             servidor_id = data.get('id_servidor')
             
 
@@ -66,7 +69,5 @@ class CanalController:
             else:
                 return jsonify({"message": "Usuario no encontrado"}), 404
         else:
-            return render_template("crear_canal.html")
-            
-
+            return render_template("crear_canal.html", correo=correo, nombre=nombre)
         

@@ -7,7 +7,7 @@ class SalaController:
     @classmethod
     def show_sala(cls):
         correo = session.get('correo')                         
-        user = User(correo=correo) #user = Sala.get(User(correo = correo))
+        user = User(correo=correo) #user = Sala.get(User(correo = correo)) 
 
          # método para obtener el usuario a partir del correo en la sesión
         b_user = User()
@@ -70,6 +70,39 @@ class SalaController:
             return render_template("crear_servidor.html")
 
         
+
+    @classmethod
+    def unir_servi(cls):
+
+        if request.method == 'POST':
+            
+            data = request.json
+            servidor_id = data.get('servidor_id') # es con coma o sin coma
+
+            correo = session.get('correo')
+
+            # método para obtener el usuario a partir del correo en la sesión
+            user = User()
+            user.correo = correo
+            user = User.get(user)  # Utiliza el método get para obtener el usuario completo
+
+            if user:
+                id_usuario = user.id_usuario # Obtiene el id del usuario encontrado
+                print("usuario_id", id_usuario, "servidor_id:", servidor_id)
+
+
+                if Sala.unir_servi({"usuario_id": id_usuario, "servidor_id": servidor_id}):   # TRUE O FALSE (TRUE se encontro el user en la base de datos)
+                    return jsonify({"message": "Servidor Creado"}), 200   #retornamos el numero
+                else:
+                    return jsonify({"message": "Error al unir"}), 400 #401 no es
+            else:
+                return jsonify({"message": "Usuario no encontrado"}), 404
+        else:
+            return jsonify({"message": "Método no permitido"}), 405
+
+
+
+
 
     @classmethod
     def logout(cls):

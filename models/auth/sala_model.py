@@ -53,7 +53,11 @@ class Sala:
             DatabaseConnection.execute_query(query, params=params)
             return True
 
-
+    @classmethod
+    def unir_servi(cls, params):              
+            query  = """INSERT INTO Discor.user_servi (usuario_id, servidor_id) VALUES (%(usuario_id)s,%(servidor_id)s)"""
+            DatabaseConnection.execute_query(query, params=params)
+            return True
 
 
 

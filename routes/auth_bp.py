@@ -27,7 +27,9 @@ auth_bp.route('/perfil_float', methods=['GET'])(UserController.perfil_float)
 
 auth_bp.route('/mostrar_perfil', methods=['GET'])(UserController.mostrar_perfil) 
 
-auth_bp.route('/logout', methods=['GET'])(UserController.logout)          
+auth_bp.route('/logout', methods=['GET'])(UserController.logout)   
+
+auth_bp.route('/grid', methods=['GET'])(UserController.grid)
 
 
 
@@ -43,7 +45,7 @@ auth_bp.route('/editar_contraseña', methods=['GET'])(UserController.editar_cont
 
 
 auth_bp.route('/mod_foto', methods=['PUT'])(UserController.mod_foto)            # html modificar
-auth_bp.route('/mod_usuario', methods=['PUT'])(UserController.mod_usuario)            # html modificar
+auth_bp.route('/mod_usuario', methods=['PUT'])(UserController.mod_usuario)            # html modificar 
 auth_bp.route('/mod_nombre', methods=['PUT'])(UserController.mod_nombre)            # html modificar
 auth_bp.route('/mod_apellido', methods=['PUT'])(UserController.mod_apellido)            # html modificar
 auth_bp.route('/mod_correo', methods=['PUT'])(UserController.mod_correo)            # html modificar

@@ -15,4 +15,7 @@ sala_bp.route('/logout', methods=['GET'])(SalaController.logout)            # na
 sala_bp.route('/crear_servidor', methods=['GET', 'POST'])(SalaController.crear_servidor)   # html crear servisor 
 
 
+sala_bp.route('/unir_servi', methods=['POST'])(SalaController.unir_servi)            # nada X
+
+
 

@@ -1,9 +1,9 @@
 from ...database import DatabaseConnection
 
-class User:
+class User: 
 
     def __init__(self, **kwargs):
-        self.id_usuario = kwargs.get('id_usuario')
+        self.id_usuario = kwargs.get('id_usuario') 
         self.nombre = kwargs.get('nombre')
         self.apellido = kwargs.get('apellido')
         self.correo = kwargs.get('correo')
@@ -37,7 +37,7 @@ class User:
     
     @classmethod
     def get(cls, user):
-        query = """SELECT * FROM Discor.usuarios 
+        query = """SELECT * FROM Discor.usuarios  
         WHERE correo = %(correo)s"""
         params = user.__dict__
         result = DatabaseConnection.fetch_one(query, params=params)
@@ -94,6 +94,6 @@ class User:
     
     @classmethod
     def mod_contra(cls, params):            
-            query  = """UPDATE Discor.usuarios SET correo = %(correo)s WHERE usuarios.id_usuario = %(id_usuario)s"""
+            query  = """UPDATE Discor.usuarios SET password = %(password)s WHERE usuarios.id_usuario = %(id_usuario)s"""
             DatabaseConnection.execute_query(query, params=params)
             return True
